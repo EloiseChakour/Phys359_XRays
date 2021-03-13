@@ -13,8 +13,8 @@ import numpy as np
 
 
 
-file  = open("Cu_03-09-20.uxd", "r") 
-
+#file  = open("Cu_03-09-20.uxd", "r") 
+file  = open("Ni_03-09-20.uxd", "r") 
 
 data = file.read()
 data = data.split()
@@ -40,7 +40,7 @@ file.close()
 
 
 a=650
-b=690
+b=750
 
 x_short = x[a:b]
 y_short = y[a:b]
