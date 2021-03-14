@@ -16,6 +16,10 @@ import spinmob as s
 #angles = np.array([21.7129, 25.273, 45.037, 47.652])
 #angle_errors = np.array([0.0007, 0.002, 0.004, 0.007])
 
+#From Voight, Copper
+angles = np.array([21.7136, 25.274, 37.128, 45.036, 47.651])
+angle_errors = np.array([0.0007, 0.002, 0.003, 0.004, 0.007])
+
 
 #Nickel, Lorentzian
 #angles = np.array([22.2939, 25.967, 38.246, 46.530, 49.287])
@@ -23,7 +27,7 @@ import spinmob as s
 
 
 #From Lorentzian, Cu25Ni75
-angles = np.array([22.161, 25.818, 37.998, 46.1982, 48.917])
+#angles = np.array([22.161, 25.818, 37.998, 46.1982, 48.917])
 
 
 d = (1.54)/(2.0* np.sin(np.radians(angles)))

@@ -9,6 +9,7 @@ import spinmob as s
 #import mcphysics as mcp
 #import matplotlib.pyplot as plt
 import numpy as np
+from scipy.special import wofz
 
 
 
@@ -48,7 +49,7 @@ y_short = y[a:b]
 
 
 f=s.data.fitter()
-f.set_functions('a*exp(-(x-2.0*b)**2/(2*c**2))','a=25,b=21,c=23')
+f.set_functions('a * real(wofz((x + 1j*gamma) / s /sqrt(2))) / s /sqrt(2*pi)','a=25, s=3.5')
 #Gaussian Function with guessed value for parameter a,b,c,d, and e 
 #f.set_functions('(a/(c * sqrt(2 * pi)))* exp(-0.5* (x - b)2/(c2)) + d(-0.043x + 20.35 - 1.36*erf(x-b))','a=1873, b=276.8, c=13.8 , d=2.0')
 #f.set_data(x,y, np.sqrt(y))
