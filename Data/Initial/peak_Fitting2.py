@@ -13,8 +13,8 @@ import numpy as np
 
 
 
-file  = open("Cu_03-09-20.uxd", "r") 
-#file  = open("Ni_03-09-20.uxd", "r") 
+#file  = open("Cu_03-09-20.uxd", "r") 
+file  = open("Ni_03-09-20.uxd", "r") 
 
 #file  = open("Cu25Ni75.uxd", "r") 
 #file  = open("Cu50Ni50.uxd", "r") 
@@ -63,7 +63,7 @@ f=s.data.fitter(plot_guess= False)
 f.set_functions('a * (0.5*g)/((x-2.0*b)**2 + (0.5*g)**2) + c*exp(-(x-2.0*b)**2/(2*g**2)) + z','a = 50, b=21.7, g = 0.14, c = 800, z=12')
 #Gaussian Function with guessed value for parameter a,b,c,d, and e 
 #f.set_functions('(a/(c * sqrt(2 * pi)))* exp(-0.5* (x - b)2/(c2)) + d(-0.043x + 20.35 - 1.36*erf(x-b))','a=1873, b=276.8, c=13.8 , d=2.0')
-#f.set_data(x,y, np.sqrt(y))
-f.set_data(x_short,y_short, np.sqrt(y_short))
+f.set_data(x,y, np.sqrt(y))
+#f.set_data(x_short,y_short, np.sqrt(y_short))
 values = f.get_fit_values()
 f.fit()

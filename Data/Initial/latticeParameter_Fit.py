@@ -14,7 +14,7 @@ import spinmob as s
 #angle_errors = np.array([0.0007, 0.002, 0.004, 0.007])#From fitting the peak positions
 
 #Copper, Voight
-angles = np.array([21.7136, 25.277, 37.128, 45.036, 47.651])
+angles = np.array([21.7136, 25.276, 37.128, 45.036, 47.651])
 angle_errors = np.array([0.0007, 0.002, 0.003, 0.004, 0.007])
 
 
