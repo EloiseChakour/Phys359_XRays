@@ -25,8 +25,12 @@ import spinmob as s
 
 
 #Cu50Ni50, Voight
-angles = np.array([22.031, 25.653, 37.737, 45.854, 48.57])
-angle_errors = np.array([0.001, 0.003, 0.005, 0.007, 0.01])
+#angles = np.array([22.031, 25.653, 37.737, 45.854, 48.57])
+#angle_errors = np.array([0.001, 0.003, 0.005, 0.007, 0.01])
+
+#Cu75Ni25, Voight
+angles = np.array([21.864, 25.462, 37.452, 45.461, 48.10])
+angle_errors = np.array([0.001, 0.002, 0.004, 0.006, 0.01])
 
 #Sum of the Squares of the Mills Indices
 
@@ -46,7 +50,7 @@ f=s.data.fitter(plot_guess = False, ylabel = "Angle (degrees)", xlabel = "Sum of
 
 
 #Fit Function for putting the "Integers" on the x-axis
-f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*a))) + z','a = 3.58, z=1')
+f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*a))) + z','a = 3.5253, z=1')
 
 #Fit for Alloys with Vegard's Law
 #f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*(0.25*a + 0.75*b))))  + z','a = 3.6023, b=3.5253, z=1')
