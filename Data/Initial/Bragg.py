@@ -8,29 +8,28 @@ Created on Wed Mar 10 16:14:16 2021
 import numpy as np
 import spinmob as s
 
-#From Gaussians
-#angles = np.array([21.7139, 25.277, 45.040, 47.652])
-#angle_errors = np.array([0.0008, 0.002, 0.004, 0.006])
-
-#From Lorentzian, Copper
-#angles = np.array([21.7129, 25.273, 45.037, 47.652])
-#angle_errors = np.array([0.0007, 0.002, 0.004, 0.007])
 
 #From Voight, Copper
-angles = np.array([21.7136, 25.274, 37.128, 45.036, 47.651])
-angle_errors = np.array([0.0007, 0.002, 0.003, 0.004, 0.007])
+#angles = np.array([21.7136, 25.274, 37.128, 45.036, 47.651])
+#angle_errors = np.array([0.0007, 0.002, 0.003, 0.004, 0.007])
 
 
-#Nickel, Lorentzian
-#angles = np.array([22.2939, 25.967, 38.246, 46.530, 49.287])
+#Nickel, Voight
+#angles = np.array([22.2942, 25.969, 38.247, 46.530, 49.276])
+#angle_errors = np.array([0.0008, 0.002, 0.003, 0.004, 0.008])
+
+#From Voight, Cu25Ni75
+#angles = np.array([22.162, 25.818, 38.000, 46.196, 48.91])
+#angle_errors = np.array([0.001, 0.003, 0.004, 0.007, 0.01])
+
+
+#Cu50Ni50, Voight
+angles = np.array([22.031, 25.653, 37.737, 45.854, 48.57])
+angle_errors = np.array([0.001, 0.003, 0.005, 0.007, 0.01])
 
 
 
-#From Lorentzian, Cu25Ni75
-#angles = np.array([22.161, 25.818, 37.998, 46.1982, 48.917])
-
-
-d = (1.54)/(2.0* np.sin(np.radians(angles)))
+d = (1.541838)/(2.0* np.sin(np.radians(angles)))
 
 mills = 1.0/(d**2.0)
 

@@ -15,8 +15,15 @@ from scipy.special import wofz
 
 
 #file  = open("Cu_03-09-20.uxd", "r") 
-file  = open("Ni_03-09-20.uxd", "r") 
+#file  = open("Ni_03-09-20.uxd", "r") 
 
+
+#file  = open("Cu25Ni75.uxd", "r")
+file  = open("Cu50Ni50.uxd", "r") 
+#file  = open("Cu75Ni25.uxd", "r") 
+
+#file  = open("Pb_08-09-20D.uxd", "r") 
+#file  = open("Sn_08-09-20.uxd", "r") 
 data = file.read()
 data = data.split()
 
@@ -40,18 +47,17 @@ y = np.array(y)
 file.close()
 
 
-a=650
-b=750
+a=1200
+b=1400
 
 x_short = x[a:b]
 y_short = y[a:b]
 
 
 
-f=s.data.fitter()
-f.set_functions('a * real(wofz((x + 1j*gamma) / s /sqrt(2))) / s /sqrt(2*pi)','a=25, s=3.5')
+f=s.data.fitter(plot_guess=False)
+f.set_functions('a * (0.5*g)/((x-2.0*b)**2 + (0.5*g)**2) + a*exp(-(x-2.0*b)**2/(2*d**2))+ e * (0.5*g)/((x-2.0*h)**2 + (0.5*j)**2) + e*exp(-(x-2.0*h)**2/(2*k**2)) + z','a = 50, b=37.8,  g = 0.158, d = 0.158, e=100, h=37.8, j=0.2, k = 0.2, z=4')
 #Gaussian Function with guessed value for parameter a,b,c,d, and e 
-#f.set_functions('(a/(c * sqrt(2 * pi)))* exp(-0.5* (x - b)2/(c2)) + d(-0.043x + 20.35 - 1.36*erf(x-b))','a=1873, b=276.8, c=13.8 , d=2.0')
 #f.set_data(x,y, np.sqrt(y))
 f.set_data(x_short,y_short, np.sqrt(y_short))
 values = f.get_fit_values()
