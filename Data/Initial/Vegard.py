@@ -16,11 +16,11 @@ latticeParamError = np.array([0.0003, 0.0004, 0.0005,0.0004, 0.0003])
 
 
 
-f=s.data.fitter(plot_guess = False, ylabel = "Lattice Paramter (A)", xlabel = "% Nickel")
+f=s.data.fitter(plot_guess = True, ylabel = "Lattice Paramter (A)", xlabel = "% Nickel")
 
 
 #
-f.set_functions(' a*(1-(x/100.0)) + b*(x/100.0)',' a=3.614, b= 3.523')
+f.set_functions(' c*(1-(x/100.0)) + n*(x/100.0)',' c=3.6164, n= 3.5253')
 
 #W/ Our Values
 #f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*(0.25*a + 0.75*b))))  + z','a = 3.6023, b=3.5253, z=1')
