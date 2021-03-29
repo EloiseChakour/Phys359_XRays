@@ -16,7 +16,7 @@ latticeParamError = np.array([0.0003, 0.0004, 0.0005,0.0004, 0.0003])
 
 
 
-f=s.data.fitter(plot_guess = True, ylabel = "Lattice Paramter (A)", xlabel = "% Nickel")
+f=s.data.fitter(plot_fit = False, plot_guess = True,  ylabel = "Lattice Paramter (A)", xlabel = "% Nickel")
 
 
 #
