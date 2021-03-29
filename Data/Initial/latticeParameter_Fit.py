@@ -8,57 +8,102 @@ Created on Wed Mar 10 16:14:16 2021
 import numpy as np
 import spinmob as s
 
+# =============================================================================
+# 
+# #Copper, Voight
+# angles = np.array([21.7136, 25.276, 37.128, 45.036, 47.651])
+# angle_errors = np.array([0.0007, 0.002, 0.003, 0.004, 0.007])
+# integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
+# =============================================================================
 
-#Copper, Voight
-#angles = np.array([21.7136, 25.276, 37.128, 45.036, 47.651])
-#angle_errors = np.array([0.0007, 0.002, 0.003, 0.004, 0.007])
+# =============================================================================
+# #Nickel, Voight
+# angles = np.array([22.2942, 25.969, 38.247, 46.530, 49.276])
+# angle_errors = np.array([0.0008, 0.002, 0.003, 0.004, 0.008])
+# integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
+# =============================================================================
+
+# =============================================================================
+# #Cu25NI75
+# angles = np.array([22.162, 25.818, 38.000, 46.196, 48.91])
+# angle_errors = np.array([0.001, 0.003, 0.004, 0.007, 0.01])
+# integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
+# =============================================================================
+
+# =============================================================================
+# #Cu50Ni50, Voight
+# angles = np.array([22.031, 25.653, 37.737, 45.854, 48.57])
+# angle_errors = np.array([0.001, 0.003, 0.005, 0.007, 0.01])
+# integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
+# =============================================================================
+
+# =============================================================================
+# #Cu75Ni25, Voight
+# angles = np.array([21.864, 25.462, 37.452, 45.461, 48.10])
+# angle_errors = np.array([0.001, 0.002, 0.004, 0.006, 0.01])
+# integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
+# =============================================================================
 
 
-#Nickel, Voight
-#angles = np.array([22.2942, 25.969, 38.247, 46.530, 49.276])
-#angle_errors = np.array([0.0008, 0.002, 0.003, 0.004, 0.008])
-
-#Cu25NI75
-#angles = np.array([22.162, 25.818, 38.000, 46.196, 48.91])
-#angle_errors = np.array([0.001, 0.003, 0.004, 0.007, 0.01])
-
-
-
-#Cu50Ni50, Voight
-#angles = np.array([22.031, 25.653, 37.737, 45.854, 48.57])
-#angle_errors = np.array([0.001, 0.003, 0.005, 0.007, 0.01])
-
-#Cu75Ni25, Voight
-angles = np.array([21.864, 25.462, 37.452, 45.461, 48.10])
-angle_errors = np.array([0.001, 0.002, 0.004, 0.006, 0.01])
-
-#Sum of the Squares of the Mills Indices
-
-#Copper
-#integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
-
-#Nickel
-#integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
-
-
-#Cu25Ni75
-integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
+#Pb, with alpha1 only 
+angles1 = np.array([15.6942, 18.189, 26.184, 31.149, 32.660, 38.535, 42.755, 44.136, 49.725, 54.008])
+angle_errors1 = np.array([0.0007, 0.001, 0.002, 0.002, 0.002, 0.005, 0.004, 0.003, 0.007, 0.005])
 
 
 
+#Pb, with alpha2 only 
+angles2 = np.array([15.6942, 18.189, 26.184, 31.149, 32.742, 38.652, 42.886, 44.277, 49.89, 54.193])
+angle_errors2 = np.array([0.0007, 0.001, 0.002, 0.002, 0.002, 0.009, 0.006, 0.005, 0.01, 0.008])
+
+
+#Finding Pb weighted averaeges
+
+#First 4 angles and errors
+angles = np.array([15.6942, 18.189, 26.184, 31.149, 0, 0, 0, 0, 0, 0])
+angle_errors = np.array([0.0007, 0.001, 0.002, 0.002, 0, 0, 0, 0, 0, 0])
+
+for i in range(4, len(angles1)):
+    angle = (2.0* angles1[i] + angles2[i])/3.0
+    angles[i] = angle
+    error = np.sqrt(((2*angle_errors1[i])**2 + (angle_errors2[i])**2)/(2**2 + 1**2))
+    angle_errors[i] = error
+
+
+
+
+#pb Integers 
+integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0, 16.0, 19.0, 20.0, 24.0, 27.0])
+
+# =============================================================================
+# 
+# #Printing for Testing
+# result = np.degrees(np.arcsin((1.541838*np.sqrt(integers))/(2.0*3.9508)))
+# print(result)
+# 
+# =============================================================================
+
+#Fitter 
 f=s.data.fitter(plot_guess = False, ylabel = "Angle (degrees)", xlabel = "Sum of the Squares of the Miller Indices")
 
-
-#Fit Function for putting the "Integers" on the x-axis
-f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*a))) + z','a = 3.5253, z=1')
-
-#Fit for Alloys with Vegard's Law
-#f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*(0.25*a + 0.75*b))))  + z','a = 3.6023, b=3.5253, z=1')
-
-
-#Fit Function for putting the Angles on the x-axis
-#f.set_functions('  (a**2)*(4.0/1.54**2)*sin(radians(x))**2','a = 3.6')
-
-f.set_data(integers,angles, angle_errors)
-values = f.get_fit_values()
+#For k averaged
+f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*a))) + z','a = 4.12, z= 0.03')
+f.set_data(integers, angles, angle_errors)
 f.fit()
+
+
+# =============================================================================
+# # For k _alpha1 
+# f.set_functions(' degrees(arcsin((1.540562*sqrt(x))/(2.0*a))) + z','a = 4.15, z=0.03')
+# f.set_data(integers,angles1, angle_errors1)
+# values = f.get_fit_values()
+# f.fit()
+# =============================================================================
+
+# =============================================================================
+# #For k_alpha 2 1.544390
+# f.set_functions(' degrees(arcsin((1.544390*sqrt(x))/(2.0*a))) + z','a = 3.9508, z=0.03')
+# f.set_data(integers,angles2, angle_errors2)
+# values = f.get_fit_values()
+# f.fit()
+# =============================================================================
+

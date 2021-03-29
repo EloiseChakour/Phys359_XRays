@@ -20,8 +20,13 @@ import numpy as np
 #file  = open("Cu50Ni50.uxd", "r") 
 #file  = open("Cu75Ni25.uxd", "r") 
 
-file  = open("Pb_08-09-20D.uxd", "r") 
+#file  = open("Pb_08-09-20D.uxd", "r") 
 #file  = open("Sn_08-09-20.uxd", "r") 
+
+
+file = open("Pb25Sn75_09-09-20", "r")
+#file = open("Pb50Sn50_09-09-20", "r")
+#file = open("Pb75Sn25_09-09-20", "r")
 
 
 data = file.read()
@@ -51,8 +56,8 @@ for i in range(len(y)):
 file.close()
 
 
-a=1480
-b=1550
+a=400
+b=450
 
 x_short = x[a:b]
 y_short = y[a:b]
@@ -60,7 +65,7 @@ y_short = y[a:b]
 
 
 f=s.data.fitter(plot_fit=False, plot_guess= False)
-f.set_functions('a * (0.5*g)/((x-2.0*b)**2 + (0.5*g)**2) + c*exp(-(x-2.0*b)**2/(2*d**2)) + z','a = 50, b=42.6, g = 0.24, c = 800, d=0.4, z=12')
+f.set_functions('a * (0.5*g)/((x-2.0*b)**2 + (0.5*g)**2) + c*exp(-(x-2.0*b)**2/(2*d**2)) + z','a = 25, b=16.0, g = 0.24, c = 800, d=0.4, z=12')
 #Gaussian Function with guessed value for parameter a,b,c,d, and e 
 #f.set_functions('(a/(c * sqrt(2 * pi)))* exp(-0.5* (x - b)2/(c2)) + d(-0.043x + 20.35 - 1.36*erf(x-b))','a=1873, b=276.8, c=13.8 , d=2.0')
 #f.set_data(x,y, np.sqrt(y))
