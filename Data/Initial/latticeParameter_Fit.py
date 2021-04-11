@@ -44,25 +44,92 @@ import spinmob as s
 # integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0])
 # =============================================================================
 
+# =============================================================================
+# 
+# #Pb, with alpha1 only 
+# angles1 = np.array([15.6942, 18.189, 26.184, 31.149, 32.660, 38.535, 42.755, 44.136, 49.725, 54.008])
+# angle_errors1 = np.array([0.0007, 0.001, 0.002, 0.002, 0.002, 0.005, 0.004, 0.003, 0.007, 0.005])
+# 
+# 
+# 
+# #Pb, with alpha2 only 
+# angles2 = np.array([15.6942, 18.189, 26.184, 31.149, 32.742, 38.652, 42.886, 44.277, 49.89, 54.193])
+# angle_errors2 = np.array([0.0007, 0.001, 0.002, 0.002, 0.002, 0.009, 0.006, 0.005, 0.01, 0.008])
+# 
+# 
+# #Finding Pb weighted averaeges
+# 
+# #First 4 angles and errors
+# angles = np.array([15.6942, 18.189, 26.184, 31.149, 0, 0, 0, 0, 0, 0])
+# angle_errors = np.array([0.0007, 0.001, 0.002, 0.002, 0, 0, 0, 0, 0, 0])
 
-#Pb, with alpha1 only 
-angles1 = np.array([15.6942, 18.189, 26.184, 31.149, 32.660, 38.535, 42.755, 44.136, 49.725, 54.008])
-angle_errors1 = np.array([0.0007, 0.001, 0.002, 0.002, 0.002, 0.005, 0.004, 0.003, 0.007, 0.005])
+
+#pb Integers 
+# integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0, 16.0, 19.0, 20.0, 24.0, 27.0])
+# =============================================================================
+# =============================================================================
+# 
+# #M42
+# #K alpha1
+# angles1 = np.array([20.2896,29.336,36.8639,43.838])
+# angle_errors1 = np.array([0.005,0.001,0.0009,0.001])
+# 
+# 
+# #K alpha2
+# angles2 = np.array([20.2896,29.420,36.966,43.977])
+# angle_errors2 = np.array([0.005,0.002,0.001,0.002])
+# 
+# #Array
+# angles = np.array([20.2896, 0, 0, 0])
+# angle_errors = np.array([0.005, 0, 0, 0])
+# 
+# integers = np.array([1.0, 2.0, 3.0, 4.0])
+# #integers = np.array([2.0, 4.0, 6.0, 8.0])
+# =============================================================================
+
+# =============================================================================
+# #M73
+# #K alpha1
+# angles1 = np.array([19.262,27.8075,34.8297,41.27,47.467])
+# angle_errors1 = np.array([0.001,0.0005,0.0009,0.01,0.006])
+# 
+# 
+# #K alpha2
+# angles2 = np.array([19.262,27.8075,34.928,41.39,47.65])
+# angle_errors2 = np.array([0.001,0.0005,0.001,0.03,0.01])
+# 
+# #Array
+# angles = np.array([19.262,27.8075, 0, 0, 0])
+# angle_errors = np.array([0.001,0.0005, 0, 0, 0])
+# 
+# 
+# #M73 Integers
+# #integers = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+# integers = np.array([2.0, 4.0, 6.0, 8.0, 10.0])
+# 
+# =============================================================================
+
+
+#SC32
+#K alpha1
+angles1 = np.array([13.6907,22.7181,26.8402,33.029,36.462,41.8780])
+angle_errors1 = np.array([0.0004,0.0007,0.0001,0.002,0.002,0.0006])
+
+
+#K alpha2
+angles2 = np.array([13.6907,22.7181,26.9151,33.116,36.575,42.005])
+angle_errors2 = np.array([0.0004,0.0007,0.0002,0.004,0.002,0.001])
+
+#Arrays
+angles = np.array([13.6907,22.7181, 0, 0, 0, 0])
+angle_errors = np.array([0.0004,0.0007, 0, 0, 0, 0])
+
+#SC32 Integers
+integers = np.array([1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 
 
 
-#Pb, with alpha2 only 
-angles2 = np.array([15.6942, 18.189, 26.184, 31.149, 32.742, 38.652, 42.886, 44.277, 49.89, 54.193])
-angle_errors2 = np.array([0.0007, 0.001, 0.002, 0.002, 0.002, 0.009, 0.006, 0.005, 0.01, 0.008])
-
-
-#Finding Pb weighted averaeges
-
-#First 4 angles and errors
-angles = np.array([15.6942, 18.189, 26.184, 31.149, 0, 0, 0, 0, 0, 0])
-angle_errors = np.array([0.0007, 0.001, 0.002, 0.002, 0, 0, 0, 0, 0, 0])
-
-for i in range(4, len(angles1)):
+for i in range(1, len(angles1)):
     angle = (2.0* angles1[i] + angles2[i])/3.0
     angles[i] = angle
     error = np.sqrt(((2*angle_errors1[i])**2 + (angle_errors2[i])**2)/(2**2 + 1**2))
@@ -71,8 +138,7 @@ for i in range(4, len(angles1)):
 
 
 
-#pb Integers 
-integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0, 16.0, 19.0, 20.0, 24.0, 27.0])
+
 
 # =============================================================================
 # 
@@ -86,14 +152,14 @@ integers = np.array([3.0, 4.0, 8.0, 11.0, 12.0, 16.0, 19.0, 20.0, 24.0, 27.0])
 f=s.data.fitter(plot_guess = False, ylabel = "Angle (degrees)", xlabel = "Sum of the Squares of the Miller Indices")
 
 #For k averaged
-f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*a))) + z','a = 4.12, z= 0.03')
+f.set_functions(' degrees(arcsin((1.541838*sqrt(x))/(2.0*a))) + z','a = 3.0, z= 0.03')
 f.set_data(integers, angles, angle_errors)
 f.fit()
 
 
 # =============================================================================
 # # For k _alpha1 
-# f.set_functions(' degrees(arcsin((1.540562*sqrt(x))/(2.0*a))) + z','a = 4.15, z=0.03')
+# f.set_functions(' degrees(arcsin((1.540562*sqrt(x))/(2.0*a))) + z','a = 3.30, z=0.03')
 # f.set_data(integers,angles1, angle_errors1)
 # values = f.get_fit_values()
 # f.fit()

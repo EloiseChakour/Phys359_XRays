@@ -25,7 +25,7 @@ from scipy.special import wofz
 #file  = open("Pb_08-09-20D.uxd", "r") 
 #file  = open("Sn_08-09-20.uxd", "r") 
 
-file = open("Pb25Sn75_09-09-20.uxd", "r")
+#file = open("Pb25Sn75_09-09-20.uxd", "r")
 #file = open("Pb50Sn50_09-09-20.uxd", "r")
 #file = open("Pb75Sn25_09-09-20.uxd", "r")
 
@@ -64,16 +64,16 @@ for i in range(len(y)):
         y[i] = 0.1
 
 
-a=425
-b=475
+a=950
+b=1000
 
 x_short = x[a:b]
 y_short = y[a:b]
 
 
 
-f=s.data.fitter(plot_fit = True, plot_guess=True)
-f.set_functions('2*a * (0.5*g)/((x-2.0*b)**2 + (0.5*g)**2) + 2*a*exp(-(x-2.0*b)**2/(2*d**2))+ a * (0.5*g)/((x-2.0*h)**2 + (0.5*g)**2) + a*exp(-(x-2.0*h)**2/(2*d**2)) + z','a = 60, b=13.655,  g = 0.1, d = 0.1096, h=13.705, z=4')
+f=s.data.fitter(plot_fit = True, plot_guess=False)
+f.set_functions('2*a * (0.5*g)/((x-2.0*b)**2 + (0.5*g)**2) + 2*a*exp(-(x-2.0*b)**2/(2*d**2))+ a * (0.5*g)/((x-2.0*h)**2 + (0.5*g)**2) + a*exp(-(x-2.0*h)**2/(2*d**2)) + z','a = 250, b=26.85,  g = 0.1, d = 0.1096, h=26.93, z=4')
 #Gaussian Function with guessed value for parameter a,b,c,d, and e 
 #f.set_data(x,y, np.sqrt(y))
 f.set_data(x_short,y_short, np.sqrt(y_short))
